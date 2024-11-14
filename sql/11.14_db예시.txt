@@ -89,27 +89,40 @@ INSERT INTO dt_production_management (
 ('WO006', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD009', 750, 100, '라인3', 2, '주간2', '지연', '정미경');
 
 -- 8. 설비관리 테이블 예시 데이터
-INSERT INTO dt_facility_management (equipment_code, equipment_company_name, 
-equipment_contact_number, equipment_contact_person, inspection_date, 
-inspection_frequency, temperature, humidity, employee_name) VALUES
-('EQ001', '설비업체1', '02-1234-5678', '박진수', CURRENT_DATE, '월간', 25.5, 60.0, '정비수'),
-('EQ002', '설비업체2', '02-2345-6789', '이민호', CURRENT_DATE, '분기', 24.8, 55.5, '정비수'),
-('EQ003', '설비업체3', '02-3456-7890', '김민수', CURRENT_DATE, '반기', 23.0, 58.0, '정비수');
+INSERT INTO dt_facility_management (
+    equipment_code, 
+    production_line,  
+    equipment_company_name, 
+    equipment_contact_number, 
+    equipment_contact_person, 
+    inspection_date, 
+    inspection_frequency, 
+    temperature, 
+    humidity, 
+    employee_name
+) VALUES
+('EQ001', '라인1', '설비업체1', '02-1234-5678', '박진수', CURRENT_DATE, '월간', 25.5, 60.0, '정비수'),
+('EQ002', '라인2', '설비업체2', '02-2345-6789', '이민호', CURRENT_DATE, '분기', 24.8, 55.5, '정비수'),
+('EQ003', '라인3', '설비업체3', '02-3456-7890', '김민수', CURRENT_DATE, '반기', 23.0, 58.0, '정비수');
 
 -- 9. 재고관리 테이블 예시 데이터
-INSERT INTO dt_inventory_management (invoice_number, product_code, inventory_quantity, unit, responsible_person, transaction_date, transaction_type) VALUES
--- 비빔밥 제품 재고
-('INV-20240115-001', 'PRD001', 1000, 'BOX', '홍길동', '2024-01-15 09:30:00', '입고'),
-('INV-20240120-001', 'PRD002', 800, 'BOX', '김철수', '2024-01-20 13:20:00', '입고'),
-('INV-20240125-001', 'PRD003', 1200, 'BOX', '김정수', '2024-01-25 15:45:00', '입고'),
--- 만두 제품 재고
-('INV-20240210-001', 'PRD004', 600, 'EA', '이영호', '2024-02-10 14:15:00', '입고'),
-('INV-20240215-001', 'PRD005', 700, 'EA', '박정우', '2024-02-15 16:30:00', '입고'),
-('INV-20240220-001', 'PRD006', 500, 'EA', '정민수', '2024-02-20 09:00:00', '입고'),
--- 김밥 제품 재고
-('INV-20240305-001', 'PRD007', 1000, 'EA', '홍길동', '2024-03-05 11:45:00', '입고'),
-('INV-20240310-001', 'PRD008', 800, 'EA', '김철수', '2024-03-10 10:00:00', '입고'),
-('INV-20240315-001', 'PRD009', 1200, 'EA', '김정수', '2024-03-15 14:30:00', '입고');
+INSERT INTO dt_inventory_management 
+(product_code, inventory_quantity, unit, responsible_person, transaction_date, transaction_type) 
+VALUES
+-- 비빔밥 제품 재고 관리
+('PRD001', 1000, 'BOX', '홍길동', '2024-01-10 09:30:00', '입고'),
+('PRD002', 1200, 'BOX', '김철수', '2024-02-10 10:15:00', '출고'),
+('PRD003', 800, 'BOX', '김정수', '2024-03-10 11:00:00', '재고조정'),
+
+-- 만두 제품 재고 관리
+('PRD004', 2000, 'EA', '이영호', '2024-01-15 09:45:00', '입고'),
+('PRD005', 2500, 'EA', '박정우', '2024-02-15 10:30:00', '출고'),
+('PRD006', 1800, 'EA', '정민수', '2024-03-15 11:15:00', '재고조정'),
+
+-- 김밥 제품 재고 관리
+('PRD007', 1500, 'EA', '홍길동', '2024-01-20 09:00:00', '입고'),
+('PRD008', 1700, 'EA', '김철수', '2024-02-20 10:45:00', '출고'),
+('PRD009', 1600, 'EA', '김정수', '2024-03-20 11:30:00', '재고조정');
 
 -- 10. 사용자 활동 로그 테이블 예시 데이터
 INSERT INTO dt_user_activity_log (user_id, action_type, action_detail, action_date) VALUES
