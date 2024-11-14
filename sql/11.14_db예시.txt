@@ -57,7 +57,7 @@ INSERT INTO dt_production_plan (
    production_line, 
    process_status, 
    work_shift, 
-   status, 
+   process_status, 
    remarks, 
    employee_name
 ) VALUES
