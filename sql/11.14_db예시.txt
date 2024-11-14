@@ -58,7 +58,7 @@ INSERT INTO dt_production_plan (
     order_quantity, 
     production_quantity, 
     production_line, 
-    equipment_status, 
+    process_status, 
     work_shift, 
     status, 
     remarks, 
