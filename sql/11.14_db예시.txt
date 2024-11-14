@@ -78,7 +78,7 @@ INSERT INTO dt_production_management (
    production_line, 
    work_order_sequence, 
    work_shift, 
-   status, 
+   process_status, 
    employee_name
 ) VALUES
 ('WO001', CURRENT_DATE, 'PRD001', 1000, 500, '라인1', 1, '주간1', '작업중', '홍길동'),
