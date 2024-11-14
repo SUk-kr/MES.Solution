@@ -70,9 +70,8 @@ CREATE TABLE dt_production_plan (
     order_quantity INT NOT NULL CHECK (order_quantity >= 0),
     production_quantity INT DEFAULT 0 CHECK (production_quantity >= 0),
     production_line ENUM('라인1', '라인2', '라인3') NOT NULL,
-    process_status VARCHAR(20),
     work_shift ENUM('주간1', '주간2', '야간1', '야간2') NOT NULL,
-    status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
+    process_status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
     remarks VARCHAR(200) DEFAULT NULL,
     employee_name VARCHAR(50) NOT NULL,
     FOREIGN KEY (product_code) REFERENCES dt_product(product_code)
@@ -88,7 +87,7 @@ CREATE TABLE dt_production_management (
     production_line ENUM('라인1', '라인2', '라인3') NOT NULL,
     work_order_sequence INT NOT NULL,
     work_shift ENUM('주간1', '주간2', '야간1', '야간2') NOT NULL,
-    status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
+    process_status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
     employee_name VARCHAR(50) NOT NULL,
     FOREIGN KEY (product_code) REFERENCES dt_product(product_code)
 );
@@ -96,7 +95,7 @@ CREATE TABLE dt_production_management (
 -- 8. 설비관리 테이블
 CREATE TABLE dt_facility_management (
     equipment_code VARCHAR(20) PRIMARY KEY,
-    production_line VARCHAR(50) NOT NULL,  -- 확장성 고려해 VARCHAR로 설정
+    production_line ENUM('라인1', '라인2', '라인3') NOT NULL,
     equipment_company_name VARCHAR(100) NOT NULL,
     equipment_contact_number VARCHAR(20) NOT NULL,
     equipment_contact_person VARCHAR(50) NOT NULL,
