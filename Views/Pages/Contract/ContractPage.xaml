@@ -32,7 +32,7 @@
                         Command="{Binding ExportCommand}"
                         Style="{StaticResource RoundedButtonStyle}"
                         Margin="0,0,10,0"/>
-                <Button Content="+ 수주 등록"
+                <Button Content="수주 등록"
                         Command="{Binding AddCommand}"
                         Style="{StaticResource RoundedButtonStyle}"/>
             </StackPanel>
@@ -157,7 +157,7 @@
                 <DataGridTextColumn Header="담당자" 
                                   Binding="{Binding EmployeeName}" 
                                   Width="100"/>
-                <DataGridTemplateColumn Header="작업" Width="100">
+                <!--<DataGridTemplateColumn Header="작업" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="상세"
@@ -167,7 +167,7 @@
                                     Style="{StaticResource RoundedButtonStyle}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

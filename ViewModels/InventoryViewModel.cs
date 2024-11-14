@@ -45,7 +45,7 @@ namespace MES.Solution.ViewModels
             RegisterShipmentCommand = new RelayCommand(ExecuteRegisterShipment);
             AdjustInventoryCommand = new RelayCommand(ExecuteAdjustInventory);
             ExportCommand = new RelayCommand(ExecuteExport);
-            ViewDetailCommand = new RelayCommand<InventoryModel>(ExecuteViewDetail);
+            //ViewDetailCommand = new RelayCommand<InventoryModel>(ExecuteViewDetail);
 
             // 초기 데이터 로드
             _ = LoadInitialData();
@@ -107,7 +107,7 @@ namespace MES.Solution.ViewModels
         public ICommand RegisterShipmentCommand { get; }
         public ICommand AdjustInventoryCommand { get; }
         public ICommand ExportCommand { get; }
-        public ICommand ViewDetailCommand { get; }
+        //public ICommand ViewDetailCommand { get; }
 
         // 포매터
         public Func<double, string> QuantityFormatter => value => value.ToString("N0");
@@ -323,14 +323,14 @@ namespace MES.Solution.ViewModels
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void ExecuteViewDetail(InventoryModel inventory)
-        {
-            if (inventory != null)
-            {
-                MessageBox.Show($"제품코드 {inventory.ProductCode}의 상세 정보 창은 추후 구현 예정입니다.", "알림",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
+        //private void ExecuteViewDetail(InventoryModel inventory)
+        //{
+        //    if (inventory != null)
+        //    {
+        //        MessageBox.Show($"제품코드 {inventory.ProductCode}의 상세 정보 창은 추후 구현 예정입니다.", "알림",
+        //            MessageBoxButton.OK, MessageBoxImage.Information);
+        //    }
+        //}
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

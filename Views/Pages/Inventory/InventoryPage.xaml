@@ -200,7 +200,7 @@
                         <DataGridTextColumn Header="재고금액" 
                                           Binding="{Binding TotalValue, StringFormat={}{0:N0}}" 
                                           Width="120"/>
-                        <DataGridTemplateColumn Width="100">
+                        <!--<DataGridTemplateColumn Width="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="상세"
@@ -210,7 +210,7 @@
                                             Style="{StaticResource RoundedButtonStyle}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

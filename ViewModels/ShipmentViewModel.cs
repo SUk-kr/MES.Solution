@@ -37,7 +37,7 @@ namespace MES.Solution.ViewModels
             SearchCommand = new RelayCommand(async () => await ExecuteSearch());
             AddCommand = new RelayCommand(ExecuteAdd);
             ExportCommand = new RelayCommand(ExecuteExport);
-            ViewDetailCommand = new RelayCommand<ShipmentModel>(ExecuteViewDetail);
+            //ViewDetailCommand = new RelayCommand<ShipmentModel>(ExecuteViewDetail);
 
             // 초기 데이터 로드
             LoadInitialData();
@@ -130,7 +130,7 @@ namespace MES.Solution.ViewModels
         public ICommand SearchCommand { get; }
         public ICommand AddCommand { get; }
         public ICommand ExportCommand { get; }
-        public ICommand ViewDetailCommand { get; }
+        //public ICommand ViewDetailCommand { get; }
 
         private async void LoadInitialData()
         {
@@ -251,14 +251,14 @@ WHERE s.shipment_date BETWEEN @StartDate AND @EndDate";
             MessageBox.Show("엑셀 내보내기 기능은 추후 구현 예정입니다.");
         }
 
-        private void ExecuteViewDetail(ShipmentModel shipment)
-        {
-            if (shipment != null)
-            {
-                // TODO: 상세 정보 창 구현
-                MessageBox.Show($"출하번호 {shipment.ShipmentNumber}의 상세 정보 창은 추후 구현 예정입니다.");
-            }
-        }
+        //private void ExecuteViewDetail(ShipmentModel shipment)
+        //{
+        //    if (shipment != null)
+        //    {
+        //        // TODO: 상세 정보 창 구현
+        //        MessageBox.Show($"출하번호 {shipment.ShipmentNumber}의 상세 정보 창은 추후 구현 예정입니다.");
+        //    }
+        //}
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
