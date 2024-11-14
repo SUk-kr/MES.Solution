@@ -96,6 +96,7 @@ CREATE TABLE dt_production_management (
 -- 8. 설비관리 테이블
 CREATE TABLE dt_facility_management (
     equipment_code VARCHAR(20) PRIMARY KEY,
+    production_line VARCHAR(50) NOT NULL,  -- 확장성 고려해 VARCHAR로 설정
     equipment_company_name VARCHAR(100) NOT NULL,
     equipment_contact_number VARCHAR(20) NOT NULL,
     equipment_contact_person VARCHAR(50) NOT NULL,
@@ -109,7 +110,6 @@ CREATE TABLE dt_facility_management (
 -- 9. 재고관리 테이블
 CREATE TABLE dt_inventory_management (
     inventory_id INT AUTO_INCREMENT PRIMARY KEY,
-    invoice_number VARCHAR(50) NOT NULL,  -- 송장번호 컬럼 추가
     product_code VARCHAR(20) NOT NULL,
     inventory_quantity INT NOT NULL CHECK (inventory_quantity >= 0),
     unit VARCHAR(20) NOT NULL,
