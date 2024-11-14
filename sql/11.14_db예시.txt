@@ -57,16 +57,17 @@ INSERT INTO dt_production_plan (
    production_line, 
    process_status, 
    work_shift, 
-   process_status, 
+   equipment_status,    -- 새로 추가된 컬럼
    remarks, 
    employee_name
 ) VALUES
-('WO001', CURRENT_DATE, 'PRD001', 1000, 0, '라인1', '정상', '주간1', '대기', '긴급 주문', '홍길동'),
-('WO002', CURRENT_DATE, 'PRD002', 800, 0, '라인2', '정상', '주간2', '작업중', '품질 검사 필요', '김철수'),
-('WO003', CURRENT_DATE, 'PRD003', 1200, 0, '라인3', '정상', '주간1', '대기', '긴급 생산 요청', '김정수'),
-('WO004', CURRENT_DATE, 'PRD007', 600, 0, '라인2', '정상', '야간1', '완료', '기본 주문', '이영호'),
-('WO005', CURRENT_DATE, 'PRD008', 1500, 0, '라인1', '정상', '주간2', '대기', '주문량 증가', '박정우'),
-('WO006', CURRENT_DATE, 'PRD009', 500, 0, '라인3', '정상', '야간2', '지연', '재고 충분', '정민수');
+('WO001', CURRENT_DATE, 'PRD001', 1000, 0, '라인1', '대기', '주간1', '정상', '긴급 주문', '홍길동'),
+('WO002', CURRENT_DATE, 'PRD002', 800, 0, '라인2', '작업중', '주간2', '정상', '품질 검사 필요', '김철수'),
+('WO003', CURRENT_DATE, 'PRD003', 1200, 0, '라인3', '대기', '주간1', '점검 필요', '긴급 생산 요청', '김정수'),
+('WO004', CURRENT_DATE, 'PRD007', 600, 0, '라인2', '완료', '야간1', '정상', '기본 주문', '이영호'),
+('WO005', CURRENT_DATE, 'PRD008', 1500, 0, '라인1', '대기', '주간2', '이상 발생', '주문량 증가', '박정우'),
+('WO006', CURRENT_DATE, 'PRD009', 500, 0, '라인3', '지연', '야간2', '정상', '재고 충분', '정민수');
+
 
 -- 7. 생산관리 테이블 예시 데이터
 INSERT INTO dt_production_management (
@@ -78,7 +79,7 @@ INSERT INTO dt_production_management (
    production_line, 
    work_order_sequence, 
    work_shift, 
-   process_status, 
+   process_status,       -- status를 process_status로 수정
    employee_name
 ) VALUES
 ('WO001', CURRENT_DATE, 'PRD001', 1000, 500, '라인1', 1, '주간1', '작업중', '홍길동'),
@@ -87,6 +88,8 @@ INSERT INTO dt_production_management (
 ('WO004', DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 'PRD007', 1200, 300, '라인3', 1, '야간2', '작업중', '박민수'),
 ('WO005', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD008', 900, 0, '라인2', 2, '주간1', '대기', '최영식'),
 ('WO006', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD009', 750, 100, '라인3', 2, '주간2', '지연', '정미경');
+
+
 
 -- 8. 설비관리 테이블 예시 데이터
 INSERT INTO dt_facility_management (
