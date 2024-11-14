@@ -62,7 +62,8 @@
                          VerticalAlignment="Center"
                          Margin="0,0,10,0"/>
                 <DatePicker Grid.Column="1"
-                          SelectedDate="{Binding ContractStartDate}"
+                          SelectedDate="{Binding StartDate,UpdateSourceTrigger=PropertyChanged}"
+                            DisplayDate="{Binding EndDate}"
                           Margin="0,0,20,0"/>
 
                 <TextBlock Grid.Column="2" 
@@ -70,7 +71,7 @@
                          VerticalAlignment="Center"
                          Margin="0,0,10,0"/>
                 <DatePicker Grid.Column="3"
-                          SelectedDate="{Binding ContractEndDate}"
+                          SelectedDate="{Binding EndDate,UpdateSourceTrigger=PropertyChanged}"
                           Margin="0,0,20,0"/>
 
                 <TextBlock Grid.Column="4" 
@@ -79,7 +80,7 @@
                          Margin="0,0,10,0"/>
                 <ComboBox Grid.Column="5"
                          ItemsSource="{Binding Companies}"
-                         SelectedItem="{Binding ContractSelectedCompany}"
+                         SelectedItem="{Binding SelectedCompany}"
                          Margin="0,0,20,0"/>
 
                 <!-- 두 번째 줄 -->
@@ -90,7 +91,7 @@
                 <ComboBox Grid.Row="1"
                          Grid.Column="1"
                          ItemsSource="{Binding Products}"
-                         SelectedItem="{Binding ContractSelectedProduct}"
+                         SelectedItem="{Binding SelectedProduct}"
                          Margin="0,10,20,0"/>
 
                 <TextBlock Grid.Row="1"
@@ -101,7 +102,7 @@
                 <ComboBox Grid.Row="1"
                          Grid.Column="3"
                          ItemsSource="{Binding SelectedProductionPlan}"
-                         SelectedItem="{Binding ContractSelectedPlan}"
+                         SelectedItem="{Binding SelectedPlan}"
                          Margin="0,10,20,0"/>
 
                 <Button Grid.Row="1"

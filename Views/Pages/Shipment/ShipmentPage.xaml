@@ -62,8 +62,9 @@
                          VerticalAlignment="Center"
                          Margin="0,0,10,0"/>
                 <DatePicker Grid.Column="1"
-                          SelectedDate="{Binding StartDate}"
-                          Margin="0,0,20,0"/>
+                          SelectedDate="{Binding StartDate,UpdateSourceTrigger=PropertyChanged}"
+                          DisplayDateEnd="{Binding EndDate}"
+                            Margin="0,0,20,0"/>
 
                 <TextBlock Grid.Column="2" 
                          Text="~"

@@ -51,6 +51,11 @@ namespace MES.Solution.ViewModels
                 {
                     _startDate = value;
                     OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_startDate > EndDate)
+                    {
+                        EndDate = _startDate;
+                    }
                 }
             }
         }
@@ -64,6 +69,11 @@ namespace MES.Solution.ViewModels
                 {
                     _endDate = value;
                     OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_endDate < StartDate)
+                    {
+                        StartDate = _endDate;
+                    }
                 }
             }
         }

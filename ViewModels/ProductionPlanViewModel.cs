@@ -9,6 +9,7 @@ using Dapper;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows;
+using Mysqlx;
 
 namespace MES.Solution.ViewModels
 {
@@ -60,6 +61,11 @@ namespace MES.Solution.ViewModels
                 {
                     _startDate = value;
                     OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_startDate > EndDate)
+                    {
+                        EndDate = _startDate;
+                    }
                 }
             }
         }
@@ -73,6 +79,11 @@ namespace MES.Solution.ViewModels
                 {
                     _endDate = value;
                     OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_endDate < StartDate)
+                    {
+                        StartDate = _endDate;
+                    }
                 }
             }
         }
@@ -171,6 +182,7 @@ ORDER BY pd.product_name";
 
         private async Task ExecuteSearch()
         {
+
             try
             {
                 using (var conn = new MySqlConnection(_connectionString))

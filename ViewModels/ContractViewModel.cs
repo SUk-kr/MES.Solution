@@ -15,11 +15,11 @@ namespace MES.Solution.ViewModels
     public class ContractViewModel : INotifyPropertyChanged
     {
         private readonly string _connectionString;
-        private DateTime _conrtactstartDate = DateTime.Now.AddDays(1 - DateTime.Now.Day); // 이번달 1일
-        private DateTime _contractendDate = DateTime.Today;
-        private string _contractselectedCompany = "전체";
-        private string _contractselectedProduct = "전체";
-        private string _contractselectedPlan = "전체";
+        private DateTime _startDate = DateTime.Now.AddDays(1 - DateTime.Now.Day); // 이번달 1일
+        private DateTime _endDate = DateTime.Today;
+        private string _selectedCompany = "전체";
+        private string _selectedProduct = "전체";
+        private string _selectedPlan = "전체";
         private ContractModel _selectedContract;
 
         public ContractViewModel()
@@ -51,66 +51,76 @@ namespace MES.Solution.ViewModels
         public ObservableCollection<string> SelectedProductionPlan { get; }
 
         // 속성
-        public DateTime ContractStartDate
+        public DateTime StartDate
         {
-            get => _conrtactstartDate;
+            get => _startDate;
             set
             {
-                if (_conrtactstartDate != value)
+                if (_startDate != value)
                 {
-                    _conrtactstartDate = value;
+                    _startDate = value;
+                    OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_startDate > EndDate)
+                    {
+                        EndDate = _startDate;
+                    }
+                }
+            }
+        }
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set
+            {
+                if (_endDate != value)
+                {
+                    _endDate = value;
+                    OnPropertyChanged();
+                    //날짜 강제선택
+                    if (_endDate < StartDate)
+                    {
+                        StartDate = _endDate;
+                    }
+                }
+            }
+        }
+
+        public string SelectedCompany
+        {
+            get => _selectedCompany;
+            set
+            {
+                if (_selectedCompany != value)
+                {
+                    _selectedCompany = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        public DateTime ContractEndDate
+        public string SelectedProduct
         {
-            get => _contractendDate;
+            get => _selectedProduct;
             set
             {
-                if (_contractendDate != value)
+                if (_selectedProduct != value)
                 {
-                    _contractendDate = value;
+                    _selectedProduct = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        public string ContractSelectedCompany
+        public string SelectedPlan
         {
-            get => _contractselectedCompany;
+            get => _selectedPlan;
             set
             {
-                if (_contractselectedCompany != value)
+                if (_selectedPlan != value)
                 {
-                    _contractselectedCompany = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string ContractSelectedProduct
-        {
-            get => _contractselectedProduct;
-            set
-            {
-                if (_contractselectedProduct != value)
-                {
-                    _contractselectedProduct = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string ContractSelectedPlan
-        {
-            get => _contractselectedPlan;
-            set
-            {
-                if (_contractselectedPlan != value)
-                {
-                    _contractselectedPlan = value;
+                    _selectedPlan = value;
                     OnPropertyChanged();
                 }
             }
@@ -211,25 +221,25 @@ JOIN dt_product p ON c.product_code = p.product_code
 WHERE c.order_date BETWEEN @StartDate AND @EndDate";
 
                     var parameters = new DynamicParameters();
-                    parameters.Add("@StartDate", ContractStartDate.Date);
-                    parameters.Add("@EndDate", ContractEndDate.Date);
+                    parameters.Add("@StartDate", StartDate.Date);
+                    parameters.Add("@EndDate", EndDate.Date);
 
-                    if (ContractSelectedCompany != "전체")
+                    if (SelectedCompany != "전체")
                     {
                         sql += " AND c.company_name = @CompanyName";
-                        parameters.Add("@CompanyName", ContractSelectedCompany);
+                        parameters.Add("@CompanyName", SelectedCompany);
                     }
 
-                    if (ContractSelectedProduct != "전체")
+                    if (SelectedProduct != "전체")
                     {
                         sql += " AND p.product_name = @ProductName";
-                        parameters.Add("@ProductName", ContractSelectedProduct);
+                        parameters.Add("@ProductName", SelectedProduct);
                     }
 
-                    if (ContractSelectedPlan != "전체")
+                    if (SelectedPlan != "전체")
                     {
                         sql += " AND c.production_plan = @PlanStatus";
-                        parameters.Add("@PlanStatus", ContractSelectedPlan);
+                        parameters.Add("@PlanStatus", SelectedPlan);
                     }
 
                     sql += " ORDER BY c.order_date DESC, c.order_number";
