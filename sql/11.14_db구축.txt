@@ -70,7 +70,7 @@ CREATE TABLE dt_production_plan (
     order_quantity INT NOT NULL CHECK (order_quantity >= 0),
     production_quantity INT DEFAULT 0 CHECK (production_quantity >= 0),
     production_line ENUM('라인1', '라인2', '라인3') NOT NULL,
-    equipment_status VARCHAR(20),
+    process_status VARCHAR(20),
     work_shift ENUM('주간1', '주간2', '야간1', '야간2') NOT NULL,
     status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
     remarks VARCHAR(200) DEFAULT NULL,
