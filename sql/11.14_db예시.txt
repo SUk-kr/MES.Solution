@@ -33,9 +33,9 @@ product_code, quantity, delivery_date, production_plan, remarks, employee_name) 
 ('ORD001', CURRENT_DATE, 'COM001', '테스트기업1', 'PRD001', 1000, DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY), '필요', '긴급주문', '홍길동'),
 ('ORD002', CURRENT_DATE, 'COM002', '테스트기업2', 'PRD002', 800, DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY), '필요', '품질검사 필요', '김철수'),
 ('ORD003', CURRENT_DATE, 'COM003', '테스트기업3', 'PRD003', 1200, DATE_ADD(CURRENT_DATE, INTERVAL 10 DAY), '필요', '긴급 생산 요청', '김정수'),
-('ORD004', CURRENT_DATE, 'COM004', '테스트기업4', 'PRD004', 600, DATE_ADD(CURRENT_DATE, INTERVAL 3 DAY), '불필요', '기본 주문', '이영호'),
-('ORD005', CURRENT_DATE, 'COM005', '테스트기업5', 'PRD005', 1500, DATE_ADD(CURRENT_DATE, INTERVAL 15 DAY), '필요', '주문량 증가', '박정우'),
-('ORD006', CURRENT_DATE, 'COM006', '테스트기업6', 'PRD006', 500, DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY), '불필요', '재고 충분', '정민수');
+('ORD004', CURRENT_DATE, 'COM004', '테스트기업4', 'PRD007', 600, DATE_ADD(CURRENT_DATE, INTERVAL 3 DAY), '불필요', '기본 주문', '이영호'),
+('ORD005', CURRENT_DATE, 'COM005', '테스트기업5', 'PRD008', 1500, DATE_ADD(CURRENT_DATE, INTERVAL 15 DAY), '필요', '주문량 증가', '박정우'),
+('ORD006', CURRENT_DATE, 'COM006', '테스트기업6', 'PRD009', 500, DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY), '불필요', '재고 충분', '정민수');
 
 -- 5. 출하관리 테이블 예시 데이터
 INSERT INTO dt_shipment (shipment_number, company_code, company_name, product_code,
@@ -43,9 +43,9 @@ production_date, shipment_date, shipment_quantity, inventory_quantity, employee_
 ('SH001', 'COM001', '테스트기업1', 'PRD001', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 500, 500, '홍길동'),
 ('SH002', 'COM002', '테스트기업2', 'PRD002', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 300, 300, '김철수'),
 ('SH003', 'COM003', '테스트기업3', 'PRD003', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 800, 800, '김정수'),
-('SH004', 'COM004', '테스트기업4', 'PRD004', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 3 DAY), 400, 400, '이영호'),
-('SH005', 'COM005', '테스트기업5', 'PRD005', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 4 DAY), 700, 700, '박정우'),
-('SH006', 'COM006', '테스트기업6', 'PRD006', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY), 200, 200, '정민수');
+('SH004', 'COM004', '테스트기업4', 'PRD007', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 3 DAY), 400, 400, '이영호'),
+('SH005', 'COM005', '테스트기업5', 'PRD008', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 4 DAY), 700, 700, '박정우'),
+('SH006', 'COM006', '테스트기업6', 'PRD009', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY), 200, 200, '정민수');
 
 -- 6. 생산계획 테이블 예시 데이터
 INSERT INTO dt_production_plan (
@@ -64,9 +64,9 @@ INSERT INTO dt_production_plan (
 ('WO001', CURRENT_DATE, 'PRD001', 1000, 0, '라인1', '정상', '주간1', '대기', '긴급 주문', '홍길동'),
 ('WO002', CURRENT_DATE, 'PRD002', 800, 0, '라인2', '정상', '주간2', '작업중', '품질 검사 필요', '김철수'),
 ('WO003', CURRENT_DATE, 'PRD003', 1200, 0, '라인3', '정상', '주간1', '대기', '긴급 생산 요청', '김정수'),
-('WO004', CURRENT_DATE, 'PRD004', 600, 0, '라인2', '정상', '야간1', '완료', '기본 주문', '이영호'),
-('WO005', CURRENT_DATE, 'PRD005', 1500, 0, '라인1', '정상', '주간2', '대기', '주문량 증가', '박정우'),
-('WO006', CURRENT_DATE, 'PRD006', 500, 0, '라인3', '정상', '야간2', '지연', '재고 충분', '정민수');
+('WO004', CURRENT_DATE, 'PRD007', 600, 0, '라인2', '정상', '야간1', '완료', '기본 주문', '이영호'),
+('WO005', CURRENT_DATE, 'PRD008', 1500, 0, '라인1', '정상', '주간2', '대기', '주문량 증가', '박정우'),
+('WO006', CURRENT_DATE, 'PRD009', 500, 0, '라인3', '정상', '야간2', '지연', '재고 충분', '정민수');
 
 -- 7. 생산관리 테이블 예시 데이터
 INSERT INTO dt_production_management (
@@ -84,9 +84,9 @@ INSERT INTO dt_production_management (
 ('WO001', CURRENT_DATE, 'PRD001', 1000, 500, '라인1', 1, '주간1', '작업중', '홍길동'),
 ('WO002', CURRENT_DATE, 'PRD002', 800, 800, '라인2', 1, '주간2', '완료', '김철수'),
 ('WO003', DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 'PRD003', 600, 0, '라인1', 2, '야간1', '대기', '이영희'),
-('WO004', DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 'PRD004', 1200, 300, '라인3', 1, '야간2', '작업중', '박민수'),
-('WO005', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD005', 900, 0, '라인2', 2, '주간1', '대기', '최영식'),
-('WO006', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD006', 750, 100, '라인3', 2, '주간2', '지연', '정미경');
+('WO004', DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY), 'PRD007', 1200, 300, '라인3', 1, '야간2', '작업중', '박민수'),
+('WO005', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD008', 900, 0, '라인2', 2, '주간1', '대기', '최영식'),
+('WO006', DATE_ADD(CURRENT_DATE, INTERVAL 2 DAY), 'PRD009', 750, 100, '라인3', 2, '주간2', '지연', '정미경');
 
 -- 8. 설비관리 테이블 예시 데이터
 INSERT INTO dt_facility_management (equipment_code, equipment_company_name, 
@@ -98,28 +98,18 @@ inspection_frequency, temperature, humidity, employee_name) VALUES
 
 -- 9. 재고관리 테이블 예시 데이터
 INSERT INTO dt_inventory_management (product_code, inventory_quantity, unit, responsible_person, transaction_date, transaction_type) VALUES
--- 기존 재고 데이터
-('PRD001', 1000, 'BOX', '홍길동', CURRENT_TIMESTAMP, '입고'),
-('PRD002', 800, 'BOX', '김철수', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 2 DAY), '입고'),
-('PRD003', 1200, 'BOX', '김정수', CURRENT_TIMESTAMP, '입고'),
-('PRD004', 600, 'EA', '이영호', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY), '입고'),
-('PRD005', 700, 'EA', '정민수', CURRENT_TIMESTAMP, '출고'),
-('PRD006', 500, 'EA', '정민수', CURRENT_TIMESTAMP, '출고'),
-
--- 새로운 재고 데이터 (1월)
-('PRD007', 1000, 'EA', '홍길동', '2024-01-15 09:30:00', '입고'),
-('PRD007', 500, 'EA', '김철수', '2024-01-20 13:20:00', '출고'),
-('PRD007', 100, 'EA', '이영호', '2024-01-25 15:45:00', '재고조정'),
-
--- 새로운 재고 데이터 (2월)
-('PRD008', 800, 'EA', '김철수', '2024-02-10 14:15:00', '입고'),
-('PRD008', 300, 'EA', '박정우', '2024-02-15 16:30:00', '출고'),
-('PRD008', 150, 'EA', '정민수', '2024-02-20 09:00:00', '재고조정'),
-
--- 새로운 재고 데이터 (3월)
-('PRD009', 1200, 'EA', '이영호', '2024-03-05 11:45:00', '입고'),
-('PRD009', 600, 'EA', '홍길동', '2024-03-10 10:00:00', '출고'),
-('PRD009', 200, 'EA', '김철수', '2024-03-15 14:30:00', '재고조정');
+-- 비빔밥 제품 재고
+('PRD001', 1000, 'BOX', '홍길동', '2024-01-15 09:30:00', '입고'),
+('PRD002', 800, 'BOX', '김철수', '2024-01-20 13:20:00', '입고'),
+('PRD003', 1200, 'BOX', '김정수', '2024-01-25 15:45:00', '입고'),
+-- 만두 제품 재고
+('PRD004', 600, 'EA', '이영호', '2024-02-10 14:15:00', '입고'),
+('PRD005', 700, 'EA', '박정우', '2024-02-15 16:30:00', '입고'),
+('PRD006', 500, 'EA', '정민수', '2024-02-20 09:00:00', '입고'),
+-- 김밥 제품 재고
+('PRD007', 1000, 'EA', '홍길동', '2024-03-05 11:45:00', '입고'),
+('PRD008', 800, 'EA', '김철수', '2024-03-10 10:00:00', '입고'),
+('PRD009', 1200, 'EA', '김정수', '2024-03-15 14:30:00', '입고');
 
 -- 10. 사용자 활동 로그 테이블 예시 데이터
 INSERT INTO dt_user_activity_log (user_id, action_type, action_detail, action_date) VALUES
@@ -129,5 +119,5 @@ INSERT INTO dt_user_activity_log (user_id, action_type, action_detail, action_da
 (2, '로그아웃', '사용자 로그아웃', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 6 HOUR)),
 (4, '로그인', '관리자 로그인', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 5 HOUR)),
 (5, '생산 시작', '라인2 생산 시작 - 고기만두', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 4 HOUR)),
-(6, '출고 등록', '출고 등록 - 김밥 200EA', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 3 HOUR)),
+(6, '출고 등록', '출고 등록 - 야채김밥 200EA', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 3 HOUR)),
 (5, '로그아웃', '관리자 로그아웃', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 2 HOUR));
