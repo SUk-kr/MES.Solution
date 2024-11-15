@@ -69,6 +69,7 @@ CREATE TABLE dt_production_plan (
     product_code VARCHAR(20) NOT NULL,
     order_quantity INT NOT NULL CHECK (order_quantity >= 0),
     production_quantity INT DEFAULT 0 CHECK (production_quantity >= 0),
+work_order_sequence INT NOT NULL,
     production_line ENUM('라인1', '라인2', '라인3') NOT NULL,
     work_shift ENUM('주간1', '주간2', '야간1', '야간2') NOT NULL,
     process_status ENUM('대기', '작업중', '완료', '지연') DEFAULT '대기',
